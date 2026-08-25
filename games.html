@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Jeux — Enter Africa Cameroun</title>
+<meta name="description" content="Découvrez les jeux créés par Enter Africa Cameroun : Ongola Land, Busara, Voyageur, et nos vidéos de présentation.">
+<meta name="theme-color" content="#0C131A">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  font-src 'self' https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob: https://i.ytimg.com;
+  media-src 'self' blob:;
+  frame-src https://www.youtube-nocookie.com;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Aller au contenu principal</a>
+<div class="scroll-watcher" id="scrollWatcher" role="progressbar" aria-label="Progression de la page"></div>
+
+<header class="contener" role="banner">
+  <div class="Logo">
+    <a href="index.html" aria-label="Accueil Enter Africa Cameroun">
+      <img id="site-logo" src="assets/img/logo.png" width="70" height="70" alt="Logo Enter Africa Cameroun" loading="eager" decoding="async">
+    </a>
+  </div>
+  <button class="hamburger-logo" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainMenu">
+    <i class="fas fa-bars" aria-hidden="true"></i>
+  </button>
+  <div class="header-controls">
+    <button id="themeToggle" aria-label="Changer le thème (clair/sombre)"><i class="fas fa-moon" aria-hidden="true"></i></button>
+    <div class="lang-selector">
+      <label class="sr-only" for="langSelect">Choisir la langue</label>
+      <select id="langSelect" aria-label="Choisir la langue">
+        <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="de">DE</option>
+      </select>
+    </div>
+  </div>
+  <form class="search-bar" role="search" id="searchForm">
+    <label class="sr-only" for="live-search">Rechercher sur le site</label>
+    <input type="search" name="search-bar" placeholder="Rechercher un jeu, une formation…" id="live-search" autocomplete="off">
+    <button type="submit" aria-label="Lancer la recherche">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <div id="search-results" role="listbox" aria-label="Résultats de recherche"></div>
+  </form>
+  <nav class="Menu" id="mainMenu" role="navigation" aria-label="Menu principal">
+    <a href="index.html#home" data-i18n="menu_home">Accueil</a>
+    <a href="services.html" target="_blank" rel="noopener" data-i18n="menu_services">Services</a>
+    <a href="games.html" target="_blank" rel="noopener" data-i18n="menu_games">Jeux</a>
+    <a href="contact.html" target="_blank" rel="noopener" data-i18n="menu_contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+<section id="games-page" aria-labelledby="games-page-title">
+  <div class="title-eac">
+    <h1 id="games-page-title" data-i18n="welcome_title">Bienvenue sur <span>ENTER</span>-<span>AFRICA</span>-CAMEROUN</h1>
+  </div>
+  <h2 class="T-h3" data-i18n-html="games_page_subtitle">Vos différents jeux sur <br> <span>E-A-C</span></h2>
+
+  <div class="games-hero">
+    <div id="games-hero-video-wrap" class="video-embed-wrap"></div>
+  </div>
+
+  <hr>
+  <h4 data-i18n-html="games_activities_title">Tryptiques <span>Activities</span></h4>
+  <div class="activities-row" id="activities-container"></div>
+
+  <hr>
+  <h2 id="games-catalog-title" data-i18n="games_title">Nos <span>Jeux</span></h2>
+  <div class="carousel-row" id="games-carousel-container"></div>
+
+  <hr>
+  <h3 data-i18n-html="games_videos_title">Parcours &amp; jeux <span>EAC</span> en vidéos</h3>
+  <div class="videos-grid" id="videos-container"></div>
+
+  <div class="capture-section" id="capture">
+    <h3 id="capture-title"></h3>
+    <p id="capture-desc"></p>
+    <img src="" alt="Aperçu du guide" class="capture-image" id="capture-image" loading="lazy" decoding="async">
+    <form id="captureForm" novalidate>
+      <label class="sr-only" for="captureEmail">Votre email</label>
+      <input type="email" id="captureEmail" placeholder="Votre email" required>
+      <button type="submit" class="btn btn-primary">Recevoir le guide</button>
+    </form>
+    <div id="captureMessage" class="form-status" role="status" aria-live="polite"></div>
+  </div>
+</section>
+</main>
+
+<button class="floating-contact" id="floatingContact" aria-label="Nous contacter">
+  <i class="fas fa-phone-alt" aria-hidden="true"></i> <span>Nous joindre</span>
+</button>
+
+<div class="chatbot-container" role="complementary" aria-label="Assistant virtuel EAC">
+  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Fenêtre de chat" aria-hidden="true">
+    <div class="chat-header">
+      <span>🤖 Assistant EAC</span>
+      <button id="closeChat" aria-label="Fermer le chat"><i class="fas fa-times" aria-hidden="true"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot">Bonjour ! Je suis votre assistant. Je vous informe sur le jeu vidéo local, africain et mondial. Posez-moi vos questions !</div>
+    </div>
+    <div class="chat-quick-replies" id="chatQuickReplies"></div>
+    <div class="chat-input">
+      <label class="sr-only" for="chatInput">Écrivez votre message</label>
+      <input type="text" id="chatInput" placeholder="Écrivez votre message…">
+      <button id="sendChat" aria-label="Envoyer le message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggle" aria-label="Ouvrir le chat" aria-expanded="false">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </button>
+</div>
+
+<footer id="mainFooter" role="contentinfo">
+  <div class="footer-col footer-col-brand">
+    <div class="copyright">©Copyright <span id="footer-brand">EAC</span>, <span id="footer-year"></span></div>
+    <div class="footer-description" id="footer-desc"></div>
+  </div>
+
+  <div class="footer-col">
+    <h4>Liens</h4>
+    <a href="#" id="link-rgpd">RGPD</a>
+    <a href="#" id="link-partners">Partenaires &amp; projets</a>
+    <a href="#" id="link-sav">SAV</a>
+    <span id="admin-session-link"></span>
+  </div>
+
+  <div class="footer-col footer-col-follow">
+    <h4>Suivez-nous</h4>
+    <div class="footer-social" id="footer-socials"></div>
+    <button class="footer-contact-btn" id="footerContactBtn">
+      <i class="fas fa-phone-alt" aria-hidden="true"></i> Nous joindre
+    </button>
+  </div>
+</footer>
+
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<script src="js/content-default.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/translations.js"></script>
+<script src="js/common.js"></script>
+<script src="js/games.js"></script>
+</body>
+</html>

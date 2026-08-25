@@ -1,0 +1,75 @@
+# ============================================================================
+# EAC — En-têtes de sécurité HTTP (Apache)
+# ============================================================================
+# La balise <meta http-equiv="Content-Security-Policy"> dans le HTML offre une
+# première protection, mais certaines directives (frame-ancestors, report-uri)
+# ne sont PAS appliquées par les navigateurs quand elles viennent d'une balise
+# <meta> — elles nécessitent un vrai en-tête HTTP. Ce fichier les fournit pour
+# un hébergement Apache. Si votre hébergeur utilise Nginx, Netlify ou Vercel,
+# voir les fichiers équivalents (nginx.conf.example, _headers).
+# ============================================================================
+
+<IfModule mod_headers.c>
+  # Empêche le site d'être affiché dans une <iframe> sur un autre domaine
+  # (protection anti-clickjacking — équivalent réel de frame-ancestors)
+  Header always set X-Frame-Options "DENY"
+
+  # Empêche le navigateur de deviner le type MIME d'un fichier
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Limite les informations envoyées dans l'en-tête Referer vers d'autres sites
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Politique de sécurité du contenu complète (source de vérité HTTP)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://i.ytimg.com; media-src 'self' blob:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+  # Désactive les fonctionnalités navigateur inutiles pour ce site
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+  # Force HTTPS pendant 1 an une fois activé (n'activez qu'après avoir vérifié
+  # que votre certificat HTTPS fonctionne correctement)
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Empêche l'accès direct au panneau d'administration depuis les moteurs de
+# recherche et masque les fichiers sensibles
+<FilesMatch "\.(md|json)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Active la compression pour de meilleures performances
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml
+</IfModule>
+
+# ============================================================================
+# PROTECTION DE L'ESPACE ADMINISTRATION (recommandé avant mise en production)
+# ============================================================================
+# Le lien "Espace administration" a été retiré du pied de page public. Pour
+# empêcher purement et simplement l'accès à /admin.html sans identifiants,
+# décommentez le bloc ci-dessous après avoir généré un fichier .htpasswd
+# (voir .env.example à la racine du projet pour la marche à suivre complète).
+#
+# <Files "admin.html">
+#   AuthType Basic
+#   AuthName "Espace administration EAC"
+#   AuthUserFile /chemin/absolu/vers/.htpasswd
+#   Require valid-user
+# </Files>
+# ============================================================================
+
+# Cache navigateur pour les ressources statiques (performance)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

@@ -1,0 +1,15 @@
+# ============================================================================
+# EAC — En-têtes de sécurité HTTP (Netlify / Cloudflare Pages)
+# ============================================================================
+# Ce fichier est automatiquement reconnu par Netlify et Cloudflare Pages.
+# Il fournit les mêmes en-têtes de sécurité que .htaccess (pour Apache) mais
+# au format attendu par ces hébergeurs. Sans effet sur un hébergement Apache
+# classique — utilisez .htaccess dans ce cas.
+# ============================================================================
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://i.ytimg.com; media-src 'self' blob:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()

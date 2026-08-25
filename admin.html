@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — Enter Africa Cameroun</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  font-src 'self' https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  media-src 'self' blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="admin-header-left">
+    <img src="assets/img/logo.png" alt="EAC" width="40" height="40">
+    <div>
+      <strong>Espace administration</strong>
+      <div class="admin-subtitle">Enter Africa Cameroun</div>
+    </div>
+  </div>
+  <div class="admin-header-right">
+    <a href="index.html" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Voir le site</a>
+  </div>
+</header>
+
+<div class="admin-layout">
+  <nav class="admin-nav" aria-label="Sections d'administration">
+    <button class="admin-nav-btn active" data-tab="general"><i class="fas fa-gear"></i> Général</button>
+    <button class="admin-nav-btn" data-tab="accueil"><i class="fas fa-house"></i> Accueil</button>
+    <button class="admin-nav-btn" data-tab="equipe"><i class="fas fa-users"></i> Équipe &amp; Galerie</button>
+    <button class="admin-nav-btn" data-tab="jeux"><i class="fas fa-gamepad"></i> Jeux</button>
+    <button class="admin-nav-btn" data-tab="services"><i class="fas fa-briefcase"></i> Services &amp; Tarifs</button>
+    <button class="admin-nav-btn" data-tab="faq"><i class="fas fa-circle-question"></i> FAQ</button>
+    <button class="admin-nav-btn" data-tab="messages"><i class="fas fa-envelope-open-text"></i> Messages reçus</button>
+    <button class="admin-nav-btn" data-tab="sauvegarde"><i class="fas fa-database"></i> Sauvegarde</button>
+  </nav>
+
+  <main class="admin-main">
+
+    <!-- ===================== GÉNÉRAL ===================== -->
+    <section class="admin-panel active" id="panel-general">
+      <h2>Informations générales</h2>
+      <p class="admin-hint">Ces informations apparaissent dans l'en-tête, le pied de page et la section contact.</p>
+      <div class="admin-grid">
+        <label>Nom du site <input type="text" id="g-name"></label>
+        <label>Nom court (footer) <input type="text" id="g-shortname"></label>
+        <label>Email de contact <input type="email" id="g-email"></label>
+        <label>Téléphone <input type="text" id="g-phone"></label>
+        <label>Adresse <input type="text" id="g-address"></label>
+        <label>Horaires <input type="text" id="g-hours"></label>
+        <label class="admin-full">Accroche (footer) <textarea id="g-tagline" rows="2"></textarea></label>
+        <label>Lien Facebook <input type="url" id="g-facebook" placeholder="https://facebook.com/..."></label>
+        <label>Lien LinkedIn <input type="url" id="g-linkedin" placeholder="https://linkedin.com/..."></label>
+        <label>Lien YouTube <input type="url" id="g-youtube" placeholder="https://youtube.com/..."></label>
+        <div class="admin-full admin-image-field">
+          <span>Logo du site</span>
+          <div class="admin-image-row">
+            <img id="g-logo-preview" src="" alt="Logo" class="admin-thumb">
+            <input type="file" id="g-logo-file" accept="image/*">
+          </div>
+        </div>
+        <label class="admin-full">Contenu de la popup RGPD (HTML simple autorisé) <textarea id="g-rgpd" rows="6"></textarea></label>
+        <label class="admin-full">Contenu de la popup SAV (HTML simple autorisé) <textarea id="g-sav" rows="6"></textarea></label>
+      </div>
+      <button class="btn btn-primary admin-save" data-save="general"><i class="fas fa-floppy-disk"></i> Enregistrer</button>
+    </section>
+
+    <!-- ===================== ACCUEIL ===================== -->
+    <section class="admin-panel" id="panel-accueil">
+      <h2>Page d'accueil</h2>
+      <div class="admin-grid">
+        <label class="admin-full">Titre principal (HTML autorisé) <input type="text" id="h-title"></label>
+        <label class="admin-full">Texte de bienvenue (HTML autorisé) <input type="text" id="h-welcome"></label>
+        <label class="admin-full">Titre "Genèse EAC" <input type="text" id="h-genese-title"></label>
+        <label class="admin-full">Texte "Genèse EAC" (HTML autorisé, &lt;br&gt; pour les retours à la ligne) <textarea id="h-genese-text" rows="8"></textarea></label>
+        <label class="admin-full">Vidéo de lancement — collez un lien YouTube (ex. https://youtu.be/XXXXXXX) ou l'identifiant seul <input type="text" id="h-video-src"></label>
+        <div class="admin-full admin-image-field">
+          <span>Image d'affiche vidéo (poster)</span>
+          <div class="admin-image-row">
+            <img id="h-video-poster-preview" src="" alt="" class="admin-thumb">
+            <input type="file" id="h-video-poster-file" accept="image/*">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary admin-save" data-save="accueil"><i class="fas fa-floppy-disk"></i> Enregistrer</button>
+    </section>
+
+    <!-- ===================== ÉQUIPE & GALERIE ===================== -->
+    <section class="admin-panel" id="panel-equipe">
+      <h2>Équipe &amp; Galerie</h2>
+      <p class="admin-hint">Ces cartes s'affichent dans la galerie horizontale de la page d'accueil (photos d'équipe, jeux, partenaires…).</p>
+      <div id="gallery-list" class="admin-list"></div>
+      <button class="btn" id="gallery-add" type="button"><i class="fas fa-plus"></i> Ajouter une carte</button>
+      <button class="btn btn-primary admin-save" data-save="gallery"><i class="fas fa-floppy-disk"></i> Enregistrer la galerie</button>
+
+      <hr>
+      <h3>Photo &amp; titre de l'équipe (section "Team")</h3>
+      <div class="admin-grid">
+        <label class="admin-full">Titre <input type="text" id="team-title"></label>
+        <div class="admin-full admin-image-field">
+          <span>Photo d'équipe</span>
+          <div class="admin-image-row">
+            <img id="team-img-preview" src="" alt="" class="admin-thumb">
+            <input type="file" id="team-img-file" accept="image/*">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary admin-save" data-save="team"><i class="fas fa-floppy-disk"></i> Enregistrer</button>
+    </section>
+
+    <!-- ===================== JEUX ===================== -->
+    <section class="admin-panel" id="panel-jeux">
+      <h2>Jeux</h2>
+      <div id="games-list" class="admin-list"></div>
+      <button class="btn" id="games-add" type="button"><i class="fas fa-plus"></i> Ajouter un jeu</button>
+      <button class="btn btn-primary admin-save" data-save="games"><i class="fas fa-floppy-disk"></i> Enregistrer les jeux</button>
+    </section>
+
+    <!-- ===================== SERVICES & TARIFS ===================== -->
+    <section class="admin-panel" id="panel-services">
+      <h2>Services</h2>
+      <div id="services-list" class="admin-list"></div>
+      <button class="btn" id="services-add" type="button"><i class="fas fa-plus"></i> Ajouter un service</button>
+      <button class="btn btn-primary admin-save" data-save="services"><i class="fas fa-floppy-disk"></i> Enregistrer les services</button>
+
+      <hr>
+      <h2>Tarifs</h2>
+      <div id="prices-list" class="admin-list"></div>
+      <button class="btn" id="prices-add" type="button"><i class="fas fa-plus"></i> Ajouter une offre</button>
+      <button class="btn btn-primary admin-save" data-save="prices"><i class="fas fa-floppy-disk"></i> Enregistrer les tarifs</button>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="admin-panel" id="panel-faq">
+      <h2>Foire aux questions</h2>
+      <div id="faq-list" class="admin-list"></div>
+      <button class="btn" id="faq-add" type="button"><i class="fas fa-plus"></i> Ajouter une question</button>
+      <button class="btn btn-primary admin-save" data-save="faq"><i class="fas fa-floppy-disk"></i> Enregistrer la FAQ</button>
+    </section>
+
+    <!-- ===================== MESSAGES ===================== -->
+    <section class="admin-panel" id="panel-messages">
+      <h2>Messages &amp; demandes reçues</h2>
+      <p class="admin-hint">Ces données sont stockées localement dans ce navigateur (aucun serveur n'est encore branché — voir README.md pour connecter un vrai service d'envoi d'emails).</p>
+
+      <h3>Formulaire de contact</h3>
+      <div id="msg-contact" class="admin-records"></div>
+
+      <h3>Demandes de rendez-vous</h3>
+      <div id="msg-meetings" class="admin-records"></div>
+
+      <h3>Emails collectés (catalogue PDF)</h3>
+      <div id="msg-leads" class="admin-records"></div>
+
+      <h3>Réservations d'offres</h3>
+      <div id="msg-bookings" class="admin-records"></div>
+
+      <button class="btn" id="clear-messages" type="button" style="margin-top:1rem;"><i class="fas fa-trash"></i> Vider tous les messages</button>
+    </section>
+
+    <!-- ===================== SAUVEGARDE ===================== -->
+    <section class="admin-panel" id="panel-sauvegarde">
+      <h2>Sauvegarde &amp; réinitialisation</h2>
+      <p class="admin-hint">Exportez vos modifications en fichier JSON pour les garder en sécurité, ou réimportez une sauvegarde. La réinitialisation efface toutes vos personnalisations et revient au contenu d'origine.</p>
+      <div class="admin-actions">
+        <button class="btn btn-primary" id="export-json" type="button"><i class="fas fa-download"></i> Exporter (JSON)</button>
+        <label class="btn" for="import-json-file" style="cursor:pointer;"><i class="fas fa-upload"></i> Importer un JSON</label>
+        <input type="file" id="import-json-file" accept="application/json" style="display:none;">
+        <button class="btn" id="reset-content" type="button" style="border-color:var(--color-tertiary);color:var(--color-tertiary);"><i class="fas fa-rotate-left"></i> Réinitialiser le contenu</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<script src="js/content-default.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

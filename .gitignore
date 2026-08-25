@@ -1,0 +1,8 @@
+# Ne jamais versionner de vrais identifiants
+.env
+.env.local
+*.htpasswd
+
+# Fichiers système
+.DS_Store
+Thumbs.db
